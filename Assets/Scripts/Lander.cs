@@ -25,11 +25,11 @@ public class Lander : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb2d.AddTorque(-turnSpeed * Time.deltaTime);
+
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Up");
+            rb2d.AddTorque(-turnSpeed * Time.deltaTime);
         }
     }
 }
