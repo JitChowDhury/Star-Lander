@@ -894,8 +894,12 @@ PolygonCollider2D:
       - {x: -18.403011, y: -10.5919895}
       - {x: -36.488567, y: 0.22026813}
       - {x: -14.403012, y: 9.4080105}
-      - {x: -2.4030123, y: -2.5919895}
-      - {x: 5.0884886, y: -1.4825369}
+      - {x: -6.4030123, y: 1.4080104}
+      - {x: -3.840767, y: -2.0528316}
+      - {x: 3.27254, y: -1.9511503}
+      - {x: 4.5694056, y: 0.506145}
+      - {x: 5.704009, y: 0.40881026}
+      - {x: 7.3799095, y: -1.7521156}
       - {x: 11.426309, y: 7.956205}
       - {x: 15.607875, y: 8.0000725}
       - {x: 19.542988, y: 2.9864264}
@@ -957,7 +961,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -2.4030123, y: -2.5919895, z: 0}
+    - position: {x: -3.840767, y: -2.0528316, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -965,7 +969,31 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 5.0884886, y: -1.4825369, z: 0}
+    - position: {x: 3.27254, y: -1.9511503, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 4.5694056, y: 0.506145, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 5.704009, y: 0.40881026, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 7.3799095, y: -1.7521156, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -1030,8 +1058,12 @@ MonoBehaviour:
   - {x: -18.403011, y: -10.5919895}
   - {x: -36.488567, y: 0.22026813}
   - {x: -14.403012, y: 9.4080105}
-  - {x: -2.4030123, y: -2.5919895}
-  - {x: 5.0884886, y: -1.4825369}
+  - {x: -6.4030123, y: 1.4080104}
+  - {x: -3.840767, y: -2.0528316}
+  - {x: 3.27254, y: -1.9511503}
+  - {x: 4.5694056, y: 0.506145}
+  - {x: 5.704009, y: 0.40881026}
+  - {x: 7.3799095, y: -1.7521156}
   - {x: 11.426309, y: 7.956205}
   - {x: 15.607875, y: 8.0000725}
   - {x: 19.542988, y: 2.9864264}
