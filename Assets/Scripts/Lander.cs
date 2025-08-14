@@ -60,7 +60,7 @@ public class Lander : MonoBehaviour
             return;
         }
 
-        Debug.Log("SuccessFull");
+        Debug.Log("SuccessFul                                                                                                   l");
 
         float maxScoreAmountLandingAngle = 100;
         float scoreDotVectorMultiplier = 10f;
@@ -69,8 +69,10 @@ public class Lander : MonoBehaviour
         float maxScoreAmountLandingSpeed = 100f;
         float landingSpeedScore = (softLandingvelocityMagnitude - relativeVelocityMagnitude) * maxScoreAmountLandingSpeed;
 
-        Debug.Log("landingAngleScore: " + landingAngleScore);
-        Debug.Log("landingSpeedScore: " + landingSpeedScore);
+
+        int score = Mathf.RoundToInt((landingAngleScore + landingSpeedScore) * landingPad.GetScoreMultiplier());
+
+        Debug.Log(score);
 
     }
 }
