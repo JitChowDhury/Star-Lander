@@ -1,8 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Lander : MonoBehaviour
 {
 
+    public event EventHandler OnUpForce;
+    public event EventHandler OnRightForce;
+    public event EventHandler OnLeftForce;
+    public event EventHandler OnNoForce;
     [SerializeField] private float force = 700f;
     [SerializeField] private float turnSpeed = 100f;
     private Rigidbody2D rb2d;
@@ -14,14 +19,17 @@ public class Lander : MonoBehaviour
 
     void FixedUpdate()
     {
+        OnNoForce?.Invoke(this, EventArgs.Empty);
         if (Input.GetKey(KeyCode.W))
         {
             // rb2d.AddForce(new Vector2(0, 1));//global up not local
             rb2d.AddForce(transform.up * Time.deltaTime * force);
+            OnUpForce?.Invoke(this, EventArgs.Empty);
         }
         if (Input.GetKey(KeyCode.A))
         {
             rb2d.AddTorque(turnSpeed * Time.deltaTime);
+            OnLeftForce?.Invoke(this, EventArgs.Empty);
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -30,6 +38,7 @@ public class Lander : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             rb2d.AddTorque(-turnSpeed * Time.deltaTime);
+            OnRightForce?.Invoke(this, EventArgs.Empty);
         }
     }
 
