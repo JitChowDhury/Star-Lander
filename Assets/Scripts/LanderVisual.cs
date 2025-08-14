@@ -8,6 +8,7 @@ public class LanderVisual : MonoBehaviour
     [SerializeField] private ParticleSystem rightThrusterParticleSystem;
 
 
+
     private Lander lander;
 
     void Awake()
@@ -57,4 +58,5 @@ public class LanderVisual : MonoBehaviour
         ParticleSystem.EmissionModule emissionModule = particleSystem.emission;
         emissionModule.enabled = enabled;
     }
+
 }
