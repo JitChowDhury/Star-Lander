@@ -17,11 +17,15 @@ public class Lander : MonoBehaviour
     }
     [SerializeField] private float force = 700f;
     [SerializeField] private float turnSpeed = 100f;
-    [SerializeField] private float fuelAmout = 10f;
+    [SerializeField] private float fuelAmountMax = 10f;
+    private float fuelAmount;
     private Rigidbody2D rb2d;
+
+
 
     void Awake()
     {
+        fuelAmount = fuelAmountMax;
         Instance = this;
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -32,7 +36,7 @@ public class Lander : MonoBehaviour
 
 
 
-        if (fuelAmout <= 0f)
+        if (fuelAmount <= 0f)
         {
             return;
         }
@@ -119,7 +123,12 @@ public class Lander : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out FuelPickup fuelPickup))
         {
             float addFuelAmount = 7f;
-            fuelAmout += addFuelAmount;
+            fuelAmount += addFuelAmount;
+
+            if (fuelAmount > fuelAmountMax)
+            {
+                fuelAmount = fuelAmountMax;
+            }
             fuelPickup.DestroySelf();
         }
         if (collision.gameObject.TryGetComponent(out CoinPickup coinPickup))
@@ -133,6 +142,24 @@ public class Lander : MonoBehaviour
     private void ConsumeFuel()
     {
         float fuelConsumptionAmount = 1f;
-        fuelAmout -= fuelConsumptionAmount * Time.deltaTime;
+        fuelAmount -= fuelConsumptionAmount * Time.deltaTime;
+    }
+
+    public float GetSpeedX()
+    {
+        return rb2d.linearVelocityX;
+    }
+    public float GetSpeedY()
+    {
+        return rb2d.linearVelocityY;
+    }
+    public float GetFuel()
+    {
+        return fuelAmount;
+    }
+
+    public float GetFuelAmountNormalized()
+    {
+        return fuelAmount / fuelAmountMax;
     }
 }
