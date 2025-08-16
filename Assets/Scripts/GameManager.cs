@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             {
                 GameLevel spawnedGameLevel = Instantiate(gameLevel, Vector3.zero, Quaternion.identity);
                 Lander.Instance.transform.position = spawnedGameLevel.GetLanderStartPosition();
-                cinemachineCamera.Target.TrackingTarget = spawnedGameLevel.GertCameraStartTargetTrasform();
+                cinemachineCamera.Target.TrackingTarget = spawnedGameLevel.GetCameraStartTargetTrasform();
                 CinemachineCameraZoom2D.Instance.SetTargetOrthographicSize(spawnedGameLevel.GetZoomedOutOrthographicSize());
             }
         }

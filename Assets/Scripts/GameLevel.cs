@@ -18,7 +18,7 @@ public class GameLevel : MonoBehaviour
         return landerStartPosition.position;
     }
 
-    public Transform GertCameraStartTargetTrasform()
+    public Transform GetCameraStartTargetTrasform()
     {
         return cameraStartTargetTransform;
     }
