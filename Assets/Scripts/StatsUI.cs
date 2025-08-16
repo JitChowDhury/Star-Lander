@@ -23,7 +23,7 @@ public class StatsUI : MonoBehaviour
         speedUpArrowGameObject.SetActive(Lander.Instance.GetSpeedY() >= 0);
         speedDownArrowGameObject.SetActive(Lander.Instance.GetSpeedY() < 0);
         speedRightArrowGameObject.SetActive(Lander.Instance.GetSpeedX() >= 0);
-        speedLeftArrowGameObject.SetActive(Lander.Instance.GetSpeedY() < 0);
+        speedLeftArrowGameObject.SetActive(Lander.Instance.GetSpeedX() < 0);
 
         fuelImage.fillAmount = Lander.Instance.GetFuelAmountNormalized();
 
