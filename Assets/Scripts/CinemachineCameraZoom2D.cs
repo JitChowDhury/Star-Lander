@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CinemachineCameraZoom2D : MonoBehaviour
 {
-    private const float NORMAL_ORHTOGRAPHICSIZE = 10f;
+    private const float NORMAL_ORHTOGRAPHIC_SIZE = 10f;
     public static CinemachineCameraZoom2D Instance { get; private set; }
 
 
@@ -27,6 +27,6 @@ public class CinemachineCameraZoom2D : MonoBehaviour
     }
     public void SetNormalOrthographicSize()
     {
-        SetTargetOrthographicSize(NORMAL_ORHTOGRAPHICSIZE);
+        SetTargetOrthographicSize(NORMAL_ORHTOGRAPHIC_SIZE);
     }
 }

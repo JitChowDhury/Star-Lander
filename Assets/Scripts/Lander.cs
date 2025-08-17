@@ -68,7 +68,9 @@ public class Lander : MonoBehaviour
             default:
             case State.WaitingToStart:
                 // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                if (Keyboard.current.wKey.isPressed || Keyboard.current.aKey.isPressed || Keyboard.current.dKey.isPressed)
+                // if (Keyboard.current.wKey.isPressed || Keyboard.current.aKey.isPressed || Keyboard.current.dKey.isPressed)
+
+                if (GameInput.Instance.IsUpActionPressed() || GameInput.Instance.IsLeftActionPressed() || GameInput.Instance.IsRightActionPressed())
                 {
                     rb2d.gravityScale = GRAVITY_NORMAL;
                     SetState(State.Normal);
@@ -84,20 +86,20 @@ public class Lander : MonoBehaviour
                     return;
                 }
 
-                if (Keyboard.current.wKey.isPressed || Keyboard.current.aKey.isPressed || Keyboard.current.dKey.isPressed)
+                if (GameInput.Instance.IsUpActionPressed() || GameInput.Instance.IsLeftActionPressed() || GameInput.Instance.IsRightActionPressed())
                 {
                     ConsumeFuel();
 
                 }
 
-                if (Keyboard.current.wKey.isPressed)
+                if (GameInput.Instance.IsUpActionPressed())
                 {
                     // rb2d.AddForce(new Vector2(0, 1));//global up not local
                     rb2d.AddForce(transform.up * Time.deltaTime * force);
                     OnUpForce?.Invoke(this, EventArgs.Empty);
 
                 }
-                if (Keyboard.current.aKey.isPressed)
+                if (GameInput.Instance.IsLeftActionPressed())
                 {
                     rb2d.AddTorque(turnSpeed * Time.deltaTime);
                     OnLeftForce?.Invoke(this, EventArgs.Empty);
@@ -105,7 +107,7 @@ public class Lander : MonoBehaviour
 
                 }
 
-                if (Keyboard.current.dKey.isPressed)
+                if (GameInput.Instance.IsRightActionPressed())
                 {
                     rb2d.AddTorque(-turnSpeed * Time.deltaTime);
                     OnRightForce?.Invoke(this, EventArgs.Empty);
