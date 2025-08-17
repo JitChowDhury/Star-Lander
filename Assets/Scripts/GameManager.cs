@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     private float time;
     private bool isTimerActive;
 
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
+
     void Awake()
     {
         Instance = this;
@@ -26,9 +29,17 @@ public class GameManager : MonoBehaviour
         Lander.Instance.OnCoinPickup += Lander_OnPickup;
         Lander.Instance.OnLanded += Lander_OnLanded;
         Lander.Instance.OnStateChanged += Lander_OnStateChanged;
+        GameInput.Instance.OnMenuButtonPressed += GameInput_OnMenuButtonPressed;
 
         LoadCurrentLevel();
     }
+
+    private void GameInput_OnMenuButtonPressed(object sender, EventArgs e)
+    {
+        PauseUnpauseGame();
+
+    }
+
 
     private void LoadCurrentLevel()
     {
@@ -102,5 +113,31 @@ public class GameManager : MonoBehaviour
     public int GetLevelNumber()
     {
         return levelNumber;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        OnGamePaused?.Invoke(this, EventArgs.Empty);
+    }
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1f;
+        OnGameUnpaused?.Invoke(this, EventArgs.Empty);
+    }
+
+
+    private void PauseUnpauseGame()
+    {
+        if (Time.timeScale == 1)
+        {
+            PauseGame();
+
+        }
+        else
+        {
+            UnPauseGame();
+
+        }
     }
 }
