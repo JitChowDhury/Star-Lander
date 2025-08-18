@@ -3,11 +3,20 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance { get; private set; }
+    public event EventHandler OnSoundChanged;
+    private static int soundVolume = 6;
+    int soundVolumeMax = 10;
 
     [SerializeField] private AudioClip fuelPickupAudioClip;
     [SerializeField] private AudioClip coinPickupAudioClip;
     [SerializeField] private AudioClip landingSuccessAudioClip;
     [SerializeField] private AudioClip crashAudioClip;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -22,10 +31,10 @@ public class SoundManager : MonoBehaviour
         switch (e.landingType)
         {
             case Lander.LandingType.Success:
-                AudioSource.PlayClipAtPoint(landingSuccessAudioClip, Camera.main.transform.position);
+                AudioSource.PlayClipAtPoint(landingSuccessAudioClip, Camera.main.transform.position, GetSoundVolumeNormalized());
                 break;
             default:
-                AudioSource.PlayClipAtPoint(crashAudioClip, Camera.main.transform.position);
+                AudioSource.PlayClipAtPoint(crashAudioClip, Camera.main.transform.position, GetSoundVolumeNormalized());
                 break;
         }
 
@@ -33,12 +42,28 @@ public class SoundManager : MonoBehaviour
 
     private void Lander_OnCoinPickup(object sender, EventArgs e)
     {
-        AudioSource.PlayClipAtPoint(coinPickupAudioClip, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(coinPickupAudioClip, Camera.main.transform.position, GetSoundVolumeNormalized());
 
     }
 
     private void Lander_OnFuelPickup(object sender, EventArgs e)
     {
-        AudioSource.PlayClipAtPoint(fuelPickupAudioClip, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(fuelPickupAudioClip, Camera.main.transform.position, GetSoundVolumeNormalized());
+    }
+
+    public void ChangeSoundVolume()
+    {
+        soundVolume = (soundVolume + 1) % soundVolumeMax;
+        OnSoundChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetSoundVolume()
+    {
+        return soundVolume;
+    }
+
+    public float GetSoundVolumeNormalized()
+    {
+        return ((float)soundVolume) / soundVolumeMax;
     }
 }

@@ -17,8 +17,14 @@ public class LanderAudio : MonoBehaviour
         lander.OnLeftForce += Lander_OnLeftForce;
         lander.OnRightForce += Lander_OnRightForce;
 
+        SoundManager.Instance.OnSoundChanged += SoundManager_OnSoundVolumeChanged;
         thrusterAudioSource.Pause();
 
+    }
+
+    private void SoundManager_OnSoundVolumeChanged(object sender, EventArgs e)
+    {
+        thrusterAudioSource.volume = SoundManager.Instance.GetSoundVolumeNormalized();
     }
 
     private void Lander_OnRightForce(object sender, EventArgs e)
