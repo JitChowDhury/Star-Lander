@@ -9,8 +9,11 @@ public class MainMenuUI : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1;
         playButton.onClick.AddListener(() =>
         {
+
+            GameManager.ResetStaticData();
             SceneLoader.LoadScene(SceneLoader.Scene.GameScene);
         });
 
