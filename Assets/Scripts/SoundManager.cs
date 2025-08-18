@@ -4,9 +4,9 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    public event EventHandler OnSoundChanged;
+    public event EventHandler OnSoundVolumeChanged;
     private static int soundVolume = 6;
-    int soundVolumeMax = 10;
+    private int soundVolumeMax = 10;
 
     [SerializeField] private AudioClip fuelPickupAudioClip;
     [SerializeField] private AudioClip coinPickupAudioClip;
@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
     public void ChangeSoundVolume()
     {
         soundVolume = (soundVolume + 1) % soundVolumeMax;
-        OnSoundChanged?.Invoke(this, EventArgs.Empty);
+        OnSoundVolumeChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public int GetSoundVolume()

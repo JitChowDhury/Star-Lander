@@ -2890,6 +2890,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resumeButton: {fileID: 455314924}
   mainMenuButton: {fileID: 6119275}
+  soundVolumeButton: {fileID: 25885153}
+  soundVolumeTextmesh: {fileID: 1116148393}
+  musicVolumeTextmesh: {fileID: 709269850}
+  musicVolumeButton: {fileID: 1618488039}
 --- !u!1 &1097570062
 GameObject:
   m_ObjectHideFlags: 0
